@@ -5,18 +5,26 @@ import items.*;
 
 public class Basket {
 
-  private ArrayList<Item> items;
+  private ArrayList<Item> shoppingBasket;
 
   public Basket() {
-    this.items = new ArrayList<Item>();
+    this.shoppingBasket = new ArrayList<Item>();
   }
 
   public int basketCount() {
-    return this.items.size();
+    return this.shoppingBasket.size();
   }
 
   public void addItem(Item item) {
-    this.items.add(item);
+    this.shoppingBasket.add(item);
+  }
+
+  public void removeItem(Item item) {
+    this.shoppingBasket.remove(item);
+  }
+
+  public void removeAll() {
+    this.shoppingBasket.clear();
   }
 
 }
