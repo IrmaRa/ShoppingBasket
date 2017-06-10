@@ -5,13 +5,11 @@ import items.*;
 
 public class ItemTest {
 
-  WhiteWine item1;
-  RedWine item2;
+  Wine item1;
 
   @Before
   public void before() {
-    item1 = new WhiteWine("Pinot Grigio", 15);
-    item2 = new RedWine("Rioja", 17);
+    item1 = new Wine("Pinot Grigio", 15);
   }
 
   @Test
@@ -21,6 +19,8 @@ public class ItemTest {
 
   @Test
   public void itemHasPrice() {
-    assertEquals(17, item2.getPrice());
+    assertEquals(15, item1.getPrice());
   }
+
+
 }

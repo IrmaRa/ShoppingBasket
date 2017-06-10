@@ -1,4 +1,5 @@
 package items;
+import interfaces.*;
 
 public abstract class Item {
   private String name;
@@ -16,4 +17,6 @@ public abstract class Item {
   public int getPrice() {
     return this.price;
   }
+
+
 }
