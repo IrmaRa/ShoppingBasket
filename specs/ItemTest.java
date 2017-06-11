@@ -9,7 +9,7 @@ public class ItemTest {
 
   @Before
   public void before() {
-    item1 = new Wine("Pinot Grigio", 15);
+    item1 = new Wine("Pinot Grigio", 15, true);
   }
 
   @Test
@@ -22,5 +22,9 @@ public class ItemTest {
     assertEquals(15, item1.getPrice());
   }
 
+  @Test
+  public void itemHasTwoForOneDeal() {
+    assertEquals(true, item1.getTwoForOneStatus());
+  }
 
 }

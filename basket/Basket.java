@@ -9,6 +9,7 @@ public class Basket {
   private double total;
   private ArrayList<Discountable> offers;
   private boolean loyaltyCard;
+  private int dealItemsTotal;
 
 
   public Basket() {
@@ -16,6 +17,7 @@ public class Basket {
     this.total = total;
     this.offers = new ArrayList<Discountable>(); 
     this.loyaltyCard = loyaltyCard;
+    this.dealItemsTotal = dealItemsTotal;
   }
 
   public int basketCount() {
@@ -29,18 +31,16 @@ public class Basket {
 
   public void removeItem(Item item) {
     this.shoppingBasket.remove(item);
+    this.total -= item.getPrice();
   }
 
   public void removeAll() {
     this.shoppingBasket.clear();
+    this.total = 0;
   }
 
   public double getTotal() {
     return this.total;
-  }
-
-  public double applyDiscount(Discountable discount) {
-    return discount.calculateDiscount(this, this.getTotal());
   } 
 
   public boolean getLoyaltyCard() {
@@ -51,17 +51,20 @@ public class Basket {
     this.loyaltyCard = true;
   }
 
+  public int getDealItemsTotal() {
+    return this.dealItemsTotal;
+  }
 
-  // public void applyDiscount() {
-  //   for(Discountable discount : this.offers) {
-  //     discount.calculateDiscount(this, this.getTotal());
-  //   }
-  // }
+  public void checkDealItemsTotal() {
+    for(Item item : shoppingBasket) {
+      if(item.getTwoForOneStatus() == true) {
+        this.dealItemsTotal += item.getPrice();
+      }
+    }
+  }
 
+  public double applyDiscount(Discountable discount) {
+    return discount.calculateDiscount(this, this.getTotal());
+  }
 
 }
-
-
-
-
-

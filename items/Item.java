@@ -1,13 +1,14 @@
 package items;
-import interfaces.*;
 
 public abstract class Item {
   private String name;
   private int price;
+  private boolean twoForOne;
 
-  public Item(String name, int price){
+  public Item(String name, int price, boolean twoForOne) {
   this.name = name;
   this.price = price;
+  this.twoForOne = twoForOne;
   } 
 
   public String getName() {
@@ -18,5 +19,8 @@ public abstract class Item {
     return this.price;
   }
 
+  public boolean getTwoForOneStatus() {
+    return this.twoForOne;
+  }
 
 }

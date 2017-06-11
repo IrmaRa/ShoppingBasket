@@ -13,8 +13,8 @@ public class BasketTest {
   @Before
   public void before() {
     basket = new Basket();
-    item1 = new Wine("Merlot", 17);
-    item2 = new Cheese("Taleggio", 8);
+    item1 = new Wine("Merlot", 17, true);
+    item2 = new Cheese("Taleggio", 8, false);
   }
 
   @Test
@@ -45,5 +45,20 @@ public class BasketTest {
     assertEquals(0, basket.basketCount());
   }
 
+  @Test
+  public void canGetDealItemsTotalOneItemOnOffer() {
+    basket.addItem(item1);
+    basket.addItem(item2);
+    basket.checkDealItemsTotal();
+    assertEquals(17, basket.getDealItemsTotal());
+  }
+
+  @Test
+  public void canGetDealItemsTotalBothItemsOnOffer() {
+    basket.addItem(item1);
+    basket.addItem(item1);
+    basket.checkDealItemsTotal();
+    assertEquals(34, basket.getDealItemsTotal());
+  }
 
 }

@@ -12,14 +12,16 @@ public class OfferTest {
   Cheese item2;
   TenPercentOff tenPercentOff;
   LoyaltyCard loyaltyCard;
+  TwoForOne twoForOne;
 
   @Before
   public void before() {
     basket = new Basket();
-    item1 = new Wine("Chardonnay", 18);
-    item2 = new Cheese("Parmesan", 12);
+    item1 = new Wine("Chardonnay", 18, true);
+    item2 = new Cheese("Parmesan", 12, false);
     tenPercentOff = new TenPercentOff();
     loyaltyCard = new LoyaltyCard();
+    twoForOne = new TwoForOne();
   }
 
 
@@ -38,5 +40,39 @@ public class OfferTest {
     assertEquals(29.4, basket.applyDiscount(loyaltyCard), 0.1);
   }
 
+  @Test
+  public void canApplyTwoForOneDiscount() {
+    basket.addItem(item1);
+    basket.addItem(item1);
+    basket.checkDealItemsTotal();
+    assertEquals(18, basket.applyDiscount(twoForOne), 0.1);
+  }
+
+  @Test
+  public void canNotApplyTwoForOneDiscountIfOneItemIsNotOnOffer() {
+    basket.addItem(item1);
+    basket.addItem(item2);
+    assertEquals(30, basket.applyDiscount(twoForOne), 0.1);
+  }
+
+  @Test
+  public void canApplyTwoForOneDiscountOnlyForItemsOnOffer1() {
+    basket.addItem(item1);
+    basket.addItem(item1);
+    basket.addItem(item2);
+    basket.checkDealItemsTotal();
+    assertEquals(30, basket.applyDiscount(twoForOne), 0.1);
+  }
+
+  @Test
+  public void canApplyTwoForOneDiscountOnlyForItemsOnOffer2() {
+    basket.addItem(item1);
+    basket.addItem(item1);
+    basket.addItem(item1);
+    basket.addItem(item1);
+    basket.addItem(item2);
+    basket.checkDealItemsTotal();
+    assertEquals(48, basket.applyDiscount(twoForOne), 0.1);
+  }
 
 }

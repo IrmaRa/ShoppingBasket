@@ -1,19 +1,15 @@
-// package offers;
-// import items.*;
-// import basket.*;
+package offers;
+import basket.*;
 
-// public class TwoForOne implements Discountable {
+public class TwoForOne implements Discountable {
 
-//   private int 
+  @Override
+  public double calculateDiscount(Basket basket, double currentTotal) {
+    if(basket.basketCount() >= 2) {
+      double totalAfterDiscount = currentTotal - (basket.getDealItemsTotal() * 0.5);
+      return totalAfterDiscount;
 
-
-//   @Override
-//   public double calculateDiscount(Basket basket, double currentTotal) {
-//     if(currentTotal > 20) {
-//       double totalAfterDiscount = currentTotal - (currentTotal * 0.1);
-//       return totalAfterDiscount;
-
-//     }
-//     else return currentTotal;
-//   }
-// }
+    }
+    else return currentTotal;
+  }
+}
