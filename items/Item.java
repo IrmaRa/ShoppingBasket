@@ -3,7 +3,7 @@ import interfaces.*;
 
 public abstract class Item {
   private String name;
-  int price;
+  private int price;
 
   public Item(String name, int price){
   this.name = name;

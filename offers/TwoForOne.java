@@ -7,5 +7,13 @@
 //   private int 
 
 
-// public int calculateDiscount(Basket basket)
+//   @Override
+//   public double calculateDiscount(Basket basket, double currentTotal) {
+//     if(currentTotal > 20) {
+//       double totalAfterDiscount = currentTotal - (currentTotal * 0.1);
+//       return totalAfterDiscount;
+
+//     }
+//     else return currentTotal;
 //   }
+// }
